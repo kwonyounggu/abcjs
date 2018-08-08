@@ -19,6 +19,7 @@
 
 var parseCommon = require('../parse/abc_common');
 var Parse = require('../parse/abc_parse');
+var sequence = require('../midi/abc_midi_sequencer');//Young added July-06-2018
 
 var tunebook = {};
 
@@ -111,7 +112,11 @@ var tunebook = {};
 		}
 		return tunebook.renderEngine(callback, output, abc, params);
 	};
-
+	//Young added on July-06-2018
+	tunebook.getSequence = function(abcTune, params)
+	{
+		return sequence(abcTune, params);
+	}
 	tunebook.renderEngine = function (callback, output, abc, params) {
 		var ret = [];
 		var isArray = function(testObject) {
