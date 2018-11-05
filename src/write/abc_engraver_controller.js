@@ -258,14 +258,18 @@ EngraverController.prototype.engraveStaffLine = function (staffGroup) {
  * Called by the Abstract Engraving Structure or any other (e.g. midi playback) to say it was selected (notehead clicked on)
  * @protected
  */
-EngraverController.prototype.notifySelect = function (abselem, tuneNumber, classes) {
+EngraverController.prototype.notifySelect = function (abselem, tuneNumber, classes) 
+{
+	//console.log("notifySelect(", abselem, ", ", tuneNumber, ", ", classes, ")");
   this.clearSelection();
-  if (abselem.highlight) {
+  if (abselem.highlight) 
+  {
     this.selected = [abselem];
     abselem.highlight();
   }
   var abcelem = abselem.abcelem || {};
-  for (var i=0; i<this.listeners.length;i++) {
+  for (var i=0; i<this.listeners.length;i++) 
+  {
 	  this.listeners[i](abcelem, tuneNumber, classes);
   }
 };
